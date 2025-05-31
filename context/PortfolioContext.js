@@ -7,43 +7,27 @@ export function PortfolioProvider({ children }) {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    const fetchPositions = async () => {
-      try {
-        const response = await fetch('/api/portfolio');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setPositions(data);
-      } catch (error) {
-        console.error('Failed to fetch portfolio:', error.message);
-      }
-    };
-
-    fetchPositions();
+    const stored = localStorage.getItem('portfolio');
+    if (stored) {
+      setPositions(JSON.parse(stored));
+    }
   }, []);
 
-  async function addPosition(data) {
-    try {
-      const response = await fetch('/api/portfolio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+  function addPosition(data) {
+    const newPosition = { ...data, id: crypto.randomUUID() };
+    const updated = [...positions, newPosition];
+    setPositions(updated);
+    localStorage.setItem('portfolio', JSON.stringify(updated));
+  }
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      setPositions(prev => [...prev, { ...data, id: result.id }]);
-    } catch (error) {
-      console.error('Failed to add position:', error.message);
-    }
+  function removePosition(id) {
+    const updated = positions.filter(p => p.id !== id);
+    setPositions(updated);
+    localStorage.setItem('portfolio', JSON.stringify(updated));
   }
 
   return (
-    <PortfolioContext.Provider value={{ positions, addPosition }}>
+    <PortfolioContext.Provider value={{ positions, addPosition, removePosition }}>
       {children}
     </PortfolioContext.Provider>
   );

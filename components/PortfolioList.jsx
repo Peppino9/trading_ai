@@ -4,7 +4,7 @@ import CoinChart from './CoinChart';
 import { useEffect, useState } from 'react';
 
 export default function PortfolioList() {
-  const { positions } = usePortfolio();
+  const { positions, removePosition } = usePortfolio(); // OBS! removePosition MÅSTE vara här
   const [prices, setPrices] = useState({});
 
   useEffect(() => {
@@ -14,12 +14,7 @@ export default function PortfolioList() {
     const fetchPrices = async () => {
       try {
         const response = await fetch(
-          `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`,
-          {
-            headers: {
-              'X-CG-Api-Key': process.env.NEXT_PUBLIC_CGEO_API_KEY, 
-            },
-          }
+          `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`
         );
 
         if (!response.ok) {
@@ -51,6 +46,7 @@ export default function PortfolioList() {
             <p>Current: ${current.toFixed(2)}</p>
             <p>PL: ${pnl.toFixed(2)} ({((pnl / cost) * 100).toFixed(2)}%)</p>
             <CoinChart coinId={pos.coinId} />
+            <button onClick={() => removePosition(pos.id)}>Remove</button> {/* 👈 Knappen */}
           </div>
         );
       })}
