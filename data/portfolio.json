@@ -4,5 +4,17 @@
     "coinId": "solana",
     "entryPrice": 11,
     "amount": 1
+  },
+  {
+    "id": "1748622558277",
+    "coinId": "ripple",
+    "entryPrice": 0.22,
+    "amount": 1000
+  },
+  {
+    "id": "1748623548814",
+    "coinId": "bitcoin",
+    "entryPrice": 89000,
+    "amount": 1
   }
 ]
