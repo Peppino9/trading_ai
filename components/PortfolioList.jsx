@@ -44,11 +44,11 @@ export default function PortfolioList() {
         const low = current * 0.9;
 
         if (current <= low * 1.05) {
-          advice = '💰 Möjligt köpläge – nära 24h-lägsta';
+          advice = '💰 Möjligt köpläge - nära 24h-lägsta';
         } else if (current >= high * 0.95) {
-          advice = '🚨 Överköpt – nära 24h-högsta';
+          advice = '🚨 Överköpt - nära 24h-högsta';
         } else {
-          advice = '📊 Stabil – avvakta';
+          advice = '📊 Stabil - avvakta';
         }
 
         return (
