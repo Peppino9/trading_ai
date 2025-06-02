@@ -1,32 +1,4 @@
 'use client';
-<<<<<<< Updated upstream
-import { usePortfolio } from '../context/PortfolioContext';
-import CoinChart from './CoinChart';
-import { useEffect, useState } from 'react';
-
-export default function PortfolioList() {
-  const { positions, removePosition } = usePortfolio(); // OBS! removePosition MÅSTE vara här
-  const [prices, setPrices] = useState({});
-
-  useEffect(() => {
-    const ids = positions.map(p => p.coinId).join(',');
-    if (!ids) return;
-
-    const fetchPrices = async () => {
-      try {
-        const response = await fetch(
-          `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setPrices(data);
-      } catch (error) {
-        console.error('Failed to fetch prices:', error.message);
-=======
 import { useEffect, useState } from 'react';
 import CoinChart from './CoinChart';
 
@@ -73,31 +45,10 @@ export default function PortfolioList({ positions, remove }) {
         localStorage.setItem('cachedPrices', JSON.stringify(updatedPrices));
       } catch (err) {
         console.error(' Error fetching prices:', err.message);
->>>>>>> Stashed changes
       }
     };
 
     fetchPrices();
-<<<<<<< Updated upstream
-  }, [positions]);
-
-  return (
-    <div>
-      {positions.map(pos => {
-        const current = prices[pos.coinId]?.usd || 0;
-        const cost = pos.entryPrice * pos.amount;
-        const value = current * pos.amount;
-        const pnl = value - cost;
-
-        return (
-          <div key={pos.id}>
-            <h4>{pos.coinId}</h4>
-            <p>Entry: ${pos.entryPrice} × {pos.amount}</p>
-            <p>Current: ${current.toFixed(2)}</p>
-            <p>PL: ${pnl.toFixed(2)} ({((pnl / cost) * 100).toFixed(2)}%)</p>
-            <CoinChart coinId={pos.coinId} />
-            <button onClick={() => removePosition(pos.id)}>Remove</button> {/* 👈 Knappen */}
-=======
   }, [positions, apiKey]);
 
   return (
@@ -133,7 +84,6 @@ export default function PortfolioList({ positions, remove }) {
             </p>
             <button onClick={() => remove(pos.id)}>Ta bort</button>
             {pos.coinId && <CoinChart coinId={pos.coinId} />}
->>>>>>> Stashed changes
           </div>
         );
       })}
