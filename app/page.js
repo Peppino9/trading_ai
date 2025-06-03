@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import PortfolioList from '../components/PortfolioList';
 import PositionForm from '../components/PositionForm';
 import { createPortfolioApi } from '../components/usePortfolioApi';
+import AiRecommendation from '../components/AiRecommendation';
 
 export default function HomePage() {
   const [coins, setCoins] = useState([]);
@@ -24,7 +25,6 @@ export default function HomePage() {
           }
         );
         const data = await res.json();
-        console.log('🔍 Coin list:', data);
 
         const formatted = data.map((coin) => ({
           id: coin.id,
@@ -39,7 +39,7 @@ export default function HomePage() {
     };
 
     fetchCoins();
-    load(); // Ladda localStorage-data till state
+    load();
   }, []);
 
   if (!selectedCoin) return <p>Laddar valutor...</p>;
@@ -66,6 +66,7 @@ export default function HomePage() {
 
       <PositionForm coin={selectedCoin} add={add} />
       <PortfolioList positions={positions} remove={remove} />
+      <AiRecommendation positions={positions} />
     </main>
   );
 }
