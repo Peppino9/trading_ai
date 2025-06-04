@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react';
 import PortfolioForm from '../components/PortfolioForm';
 import PortfolioTable from '../components/PortfolioTable';
 import { fetchPrice, fetchChart } from '../utils/api';
+import '../styles/globals.css';
 
 const COINS_URL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&x_cg_demo_api_key=${process.env.NEXT_PUBLIC_COINGECKO_API_KEY || process.env.COINGECKO_API_KEY}`;
-
-
 
 export default function HomePage() {
   const [coins, setCoins] = useState([]);
@@ -15,7 +14,6 @@ export default function HomePage() {
   const [portfolio, setPortfolio] = useState([]);
   const [error, setError] = useState(null);
 
-  // Ladda portfolio från localStorage
   useEffect(() => {
     const saved = localStorage.getItem('portfolio');
     if (saved) setPortfolio(JSON.parse(saved));
@@ -41,7 +39,7 @@ export default function HomePage() {
     fetchCoins();
   }, []);
 
-  // Hanterar lägga till coin i lista
+  // Lägg till coin
   const handleAddCoin = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -73,7 +71,7 @@ export default function HomePage() {
     }
   };
 
-  // AI Rekommendation
+  // AI Råd
   const getAdvice = async (coin) => {
     const prices = coin.chart.datasets[0].data;
     const res = await fetch('/api/ai', {
@@ -93,6 +91,11 @@ export default function HomePage() {
     }
   };
 
+  // Ta bort coin
+  const handleRemove = (id) => {
+    setPortfolio((prev) => prev.filter((coin) => coin.id !== id));
+  };
+
   return (
     <div style={{ padding: '2rem' }}>
       <h1>Min Crypto Portfölj</h1>
@@ -105,7 +108,11 @@ export default function HomePage() {
         onAdd={handleAddCoin}
       />
 
-      <PortfolioTable portfolio={portfolio} onAdvice={getAdvice} />
+      <PortfolioTable
+        portfolio={portfolio}
+        onAdvice={getAdvice}
+        onRemove={handleRemove}
+      />
     </div>
   );
 }
