@@ -46,7 +46,7 @@ Nackdelar: Kräver mer strukturering och externa bibliotek för routing, fetch, 
 ### 1. Klona projektet
 ```bash
 git clone https://github.com/Peppino9/trading_ai.git
-cd crypto-portfolio-tracker
+cd trading_ai
 ```
 ---
 
@@ -56,7 +56,7 @@ npm install
 ```
 
 ### 3. Skapa en .env.local fil i rotmappen.
-NEXT_PUBLIC_COINGECKO_API_KEY=din-demo-api-nyckel
+NEXT_PUBLIC_COINGECKO_API_KEY=din-cg-api-nyckel
 OPENAI_API_KEY=din-openai-api-nyckel
 
 Registrera dig och skapa api nyckel:
