@@ -1,8 +1,8 @@
-# 💸 Min Kryptovaluta-Portfölj
+# Min Kryptovaluta-Portfölj
 
 Ett enkelt webbverktyg för att hålla koll på din kryptoportfölj, visa prisgrafer och få investeringsråd från OpenAI. Byggt med Next.js, React, och CoinGecko API.
 
-## 📸 Funktioner
+## Funktioner
 
 - Lägg till flera kryptovalutor i din portfölj
 - Ange inköpspris och mängd
@@ -13,7 +13,7 @@ Ett enkelt webbverktyg för att hålla koll på din kryptoportfölj, visa prisgr
 
 ---
 
-## 🛠️ Teknisk stack
+## Teknisk stack
 
 - **Next.js** (App Router-struktur)
 - **React** (komponentbaserad UI)
@@ -24,17 +24,36 @@ Ett enkelt webbverktyg för att hålla koll på din kryptoportfölj, visa prisgr
 
 ---
 
+### Varför valde vi React?
+
+Vi valde React som bibliotek för detta projekt eftersom det erbjuder en balanserad kombination av flexibilitet, stort ekosystem och aktiv community. Här är en jämförelse mot andra populära ramverk:
+
+Angular
+Fördelar: Komplett ramverk, TypeScript som standard, bra för enterprise-appar
+Nackdelar: Brant inlärningskurva, kan vara övermäktigt för små projekt
+
+Vue
+Fördelar: Enklare syntax, lätt att förstå, bra dokumentation
+Nackdelar: Mindre community jämfört med React, mindre företag som använder det i stora projekt
+
+React
+Fördealar: Komponentsystem, tort ekosystem, stöd i Next.js, flexibelt och lätt att komma igång
+Nackdelar: Kräver mer strukturering och externa bibliotek för routing, fetch, etc.
+
+
 ### Kom igång
 
 ### 1. Klona projektet
-*bash*
+```bash
 git clone https://github.com/Peppino9/trading_ai.git
 cd crypto-portfolio-tracker
+```
 ---
 
 ### 2. Installera beroenden
-*bash*
+```bash
 npm install
+```
 
 ### 3. Skapa en .env.local fil i rotmappen.
 NEXT_PUBLIC_COINGECKO_API_KEY=din-demo-api-nyckel
@@ -45,7 +64,7 @@ Registrera dig och skapa api nyckel:
 	•	https://platform.openai.com/signup
 
 ### 4. Starta 
-*bash*
+```bash
 npm run dev
-
+```
 Öppna http://localhost:3000 i webbläsaren.
