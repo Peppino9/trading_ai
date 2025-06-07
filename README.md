@@ -56,14 +56,15 @@ npm install
 ```
 
 ### 3. Skapa en .env.local fil i rotmappen.
+Lägg in API nycklarna.
 ```bash
 NEXT_PUBLIC_COINGECKO_API_KEY=din-cg-api-nyckel
 OPENAI_API_KEY=din-openai-api-nyckel
 ```
 
-Registrera dig och skapa api nyckel:
-	https://www.coingecko.com/sv/api
-	https://platform.openai.com/signup
+Registrera dig och skapa api nycklar om du inte har:
+Coingecko: https://www.coingecko.com/sv/api
+OpenAI: https://platform.openai.com/signup
 
 ### 4. Starta 
 ```bash
