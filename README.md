@@ -62,8 +62,8 @@ NEXT_PUBLIC_COINGECKO_API_KEY=din-cg-api-nyckel
 OPENAI_API_KEY=din-openai-api-nyckel
 ```
 
-Registrera dig och skapa api nycklar om du inte har:
-Coingecko: https://www.coingecko.com/sv/api
+Registrera dig och skapa api nycklar om du inte har: <br>
+Coingecko: https://www.coingecko.com/sv/api <br>
 OpenAI: https://platform.openai.com/signup
 
 ### 4. Starta 
