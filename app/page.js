@@ -14,15 +14,30 @@ export default function HomePage() {
   const [portfolio, setPortfolio] = useState([]);
   const [error, setError] = useState(null);
 
+  // Ladda och uppdatera priser direkt
   useEffect(() => {
     const saved = localStorage.getItem('portfolio');
-    if (saved) setPortfolio(JSON.parse(saved));
-  }, []);
+    if (!saved) return;
 
-  // Spara portfolio till localStorage
-  useEffect(() => {
-    localStorage.setItem('portfolio', JSON.stringify(portfolio));
-  }, [portfolio]);
+    const parsed = JSON.parse(saved);
+
+    const updateAll = async () => {
+      try {
+        const updated = await Promise.all(
+          parsed.map(async (coin) => {
+            const current = await fetchPrice(coin.id);
+            return { ...coin, current };
+          })
+        );
+        setPortfolio(updated);
+      } catch (err) {
+        console.error('Kunde inte uppdatera priser:', err.message);
+        setError('Kunde inte uppdatera priser');
+      }
+    };
+
+    updateAll();
+  }, []);
 
   // Hämta coin list
   useEffect(() => {
