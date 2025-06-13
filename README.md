@@ -26,20 +26,25 @@ Ett enkelt webbverktyg för att hålla koll på din kryptoportfölj, visa prisgr
 
 ### Varför valde vi React?
 
-Vi valde React som bibliotek för detta projekt eftersom det erbjuder en balanserad kombination av flexibilitet, stort ekosystem och aktiv community. Här är en jämförelse mot andra populära ramverk:
+Vi valde React som bibliotek för detta projekt eftersom det 
+erbjuder en balanserad kombination av flexibilitet, 
+stort ekosystem och aktiv community. 
+Här är en jämförelse mot andra populära ramverk:
 
 Angular
-Fördelar: Komplett ramverk, TypeScript som standard, bra för enterprise-appar
-Nackdelar: Brant inlärningskurva, kan vara övermäktigt för små projekt
+Fördelar: Komplett ramverk, TypeScript som standard, bra för enterprise-appar, stark struktur
+Nackdelar: Brant inlärningskurva, tungt för små projekt, komplex syntax
+https://ellow.io/react-js-vs-other-front-end-frameworks-why-react-js-is-best
 
 Vue
-Fördelar: Enklare syntax, lätt att förstå, bra dokumentation
-Nackdelar: Mindre community jämfört med React, mindre företag som använder det i stora projekt
+Fördelar: Enkel syntax, lätt att förstå, snabb att komma igång, bra dokumentation
+Nackdelar: Mindre community än React och Angular, färre stora företag som använder det, viss risk för fragmentering
+https://ellow.io/react-js-vs-other-front-end-frameworks-why-react-js-is-best
 
 React
-Fördealar: Komponentsystem, tort ekosystem, stöd i Next.js, flexibelt och lätt att komma igång
-Nackdelar: Kräver mer strukturering och externa bibliotek för routing, fetch, etc.
-
+Fördelar: Komponentsystem, stort ekosystem, stöd i Next.js, flexibelt, lätt att komma igång, bra prestanda med virtuell DOM
+Nackdelar: Kräver externa bibliotek för routing och state management, kan bli rörigt utan struktur, JSX kan kännas ovant
+https://ellow.io/react-js-vs-other-front-end-frameworks-why-react-js-is-best
 
 ### Kom igång
 
